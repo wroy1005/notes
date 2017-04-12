@@ -35,3 +35,27 @@
 
 })();
 ```
+
+
+## 3. 使用JSON.parse(),key必须用双引号包裹
+```
+var a = {abc:'123'}
+JSON.stringify(a) 
+=> "{"abc":"123"}" 
+
+var b = "{abc:'123'}"
+JSON.parse(b)
+=> Uncaught SyntaxError: Unexpected token a in JSON at position 1
+
+var b = "{'abc':'123'}"
+JSON.parse(b)
+=> Uncaught SyntaxError: Unexpected token ' in JSON at position 1
+
+var b = '{"abc":"123"}'
+JSON.parse(b)
+=> Object {abc: "123"}
+
+var b = '{"abc":123}'
+JSON.parse(b)
+=> Object {abc: 123}
+```
